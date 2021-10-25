@@ -4,6 +4,7 @@ use App\Http\Controllers\DashboardController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PegawaiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,7 +36,7 @@ Route::get('/dashboard', function(){
         'total_perbup' => $perbup
     ]);
 });
-
+Route::get('/pegawai',[PegawaiController::class,'index'] );
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
