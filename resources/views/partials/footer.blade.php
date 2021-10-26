@@ -48,7 +48,7 @@
 <!-- <script src="{{ url('template/admin/dist/js/demo.js') }}"></script> -->
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{ url('template/admin/dist/js/pages/dashboard.js') }}"></script>
-+<!-- <script src="{{ url('template/admin/dist/js/pages/dashboard3.js') }}"></script> -->
+@yield('onpage-js')
 <script>
   var url = 'https://jdih.ciamiskab.go.id/api/get_perda_by_tahun';
   var url_2 = 'https://jdih.ciamiskab.go.id/api/get_perbup_by_tahun';
