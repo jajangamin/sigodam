@@ -27,17 +27,21 @@
             <div class="card">
                 <div class="card-header border-0">
                     <div class="d-flex justify-content-between">
-                    <h3 class="card-title">Sales</h3>
+                    <h3 class="card-title text-bold">Statistik Data COVID-19 Kabupaten Ciamis</h3>
                     <a href="javascript:void(0);">View Report</a>
                     </div>
                 </div>
                 <div class="card-body">
-                    <div class="d-flex">
-                    <p class="d-flex flex-column">
-                        <span class="text-bold text-lg">$18,230.00</span>
-                        <span>Sales Over Time</span>
-                    </p>
-                    <p class="ml-auto d-flex flex-column text-right">
+                    <h5>Data Kumulatif COVID-19</h5>
+                    <table class="table table-responsive table-borderless">
+                        <tr>
+                            <td>Positif : <span class="text-bold text-lg p-2" id="positive" style="color: #00a65a;"></span></td>
+                            <td>Aktif : <span class="text-bold text-lg p-2" id="aktif" style="color: #f56954;"></span></td>
+                            <td>Sembuh : <span class="text-bold text-lg p-2" id="sembuh" style="color: #007bff;"></span></td>
+                            <td>Meninggal : <span class="text-bold text-lg p-2" id="meninggal" style="color: #000;"></span></td>
+                        </tr>
+                    </table>
+                    <!-- <p class="ml-auto d-flex flex-column text-right">
                         <span class="text-success">
                         <i class="fas fa-arrow-up"></i> 33.1%
                         </span>
@@ -51,13 +55,18 @@
                     </div>
 
                     <div class="d-flex flex-row justify-content-end">
-                    <span class="mr-2">
-                        <i class="fas fa-square text-primary"></i> This year
-                    </span>
-
-                    <span>
-                        <i class="fas fa-square text-gray"></i> Last year
-                    </span>
+                        <span class="mr-2">
+                            <i class="fas fa-square" style="color: #00a65a;"></i> Positive
+                        </span>
+                        <span class="mr-2">
+                            <i class="fas fa-square" style="color:  #f56954;"></i> Aktif
+                        </span>
+                        <span class="mr-2">
+                            <i class="fas fa-square" style="color: #007bff;"></i> Sembuh
+                        </span>
+                        <span>
+                            <i class="fas fa-square" style="color: #000;"></i> Meninggal
+                        </span>
                     </div>
                 </div>
                 </div>

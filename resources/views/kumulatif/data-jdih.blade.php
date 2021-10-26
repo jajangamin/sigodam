@@ -56,7 +56,36 @@
         <!-- Main row -->
         <div class="row">
         
+            <div class="col-lg-6">
+                <!-- DONUT CHART -->
+                <div class="card card-danger">
+                    <div class="card-header">
+                    <h3 class="card-title">Peraturan Daerah</h3>
+                    </div>
+                    <div class="card-body">
+                    <canvas id="donutChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+            </div>
+            <div class="col-lg-6">
+                <!-- PIE CHART -->
+                <div class="card card-danger">
+                    <div class="card-header">
+                    <h3 class="card-title">Peraturan Bupati</h3>
+                    </div>
+                    <div class="card-body">
+                    <canvas id="pieChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+            </div>
+            
         </div>
+        <!-- /.row (main row) -->
+     
         <!-- /.row (main row) -->
     </div><!-- /.container-fluid -->
 </section>
