@@ -19,46 +19,75 @@ class PegawaiController extends Controller
         //data pegawai by golongan
 
 
-        $data['golongan'] =  DB::connection('mysql2')->table('peg_pakhir')
+//        $data['golongan'] =  DB::connection('mysql2')->table('peg_pakhir')
+//            ->select('ref_golruang.pangkat','peg_pakhir.kgolru', DB::raw("count(peg_pakhir.kgolru) as count"))
+//            ->join('ref_golruang','peg_pakhir.kgolru', '=', 'ref_golruang.kgolru')
+//
+//            ->groupBy('peg_pakhir.kgolru')
+//            ->get();
+
+        $datagol =  DB::connection('mysql2')->table('peg_pakhir')
             ->select('ref_golruang.pangkat','peg_pakhir.kgolru', DB::raw("count(peg_pakhir.kgolru) as count"))
             ->join('ref_golruang','peg_pakhir.kgolru', '=', 'ref_golruang.kgolru')
 
             ->groupBy('peg_pakhir.kgolru')
             ->get();
+//            ->toArray();
 
+        $pangkat = $datagol->pluck('pangkat');
+        $jml_pangkat = $datagol->pluck('count');
 
 
         //jenis kelamin
-        $data['jenis_kelamin'] =  DB::connection('mysql2')->table('peg_identpeg')
+        $datajk=  DB::connection('mysql2')->table('peg_identpeg')
             ->select('ref_kelamin.nkelamin', DB::raw("count(peg_identpeg.kjkel) as count"))
             ->join('ref_kelamin','peg_identpeg.kjkel', '=', 'ref_kelamin.kjkel')
             ->groupBy('peg_identpeg.kjkel')
             ->get();
 
+        $jk = $datajk->pluck('nkelamin');
+        $jml_jk  = $datajk->pluck('count');
+
         //umur
 
 
-        $data['umur']= DB::connection('mysql2')->table('peg_identpeg')
+        $dataumur = DB::connection('mysql2')->table('peg_identpeg')
             ->select(
                 DB::raw('(CASE
-                  WHEN umur < 30 THEN "... - 30"
+                WHEN umur BETWEEN 17 AND 19 THEN "17 - 19"
+                  WHEN umur BETWEEN 20 AND 29 THEN "20 - 29"
                   WHEN umur BETWEEN 30 AND 39 THEN "30 - 39"
                   WHEN umur BETWEEN 40 AND 49 THEN "40 - 49"
-                  WHEN umur BETWEEN 50 AND 54 THEN "50 - 55"
-                  WHEN umur BETWEEN 55 AND 57 THEN "55 - ..."
-                  WHEN umur >= 58 THEN "58 - ..."
-                  WHEN umur IS NULL THEN "(NULL)"
+                  WHEN umur BETWEEN 50 AND 59 THEN "50 - 59"
+                  WHEN umur >= 60 THEN "60"
+
                   END
-                   )AS range_umur,COUNT(*) AS jumlah'))
+                   )AS range_umur,COUNT(*) AS jumlah')
+
+            )
+
             ->from(DB::raw(" (SELECT tlahir,
-       TIMESTAMPDIFF(YEAR, tlahir, CURDATE()) AS umur FROM peg_identpeg)  AS dummy_table "))
+       TIMESTAMPDIFF(YEAR, tlahir, CURDATE()) AS umur FROM peg_identpeg where  DAYNAME(tlahir) IS NOT NULL
+       )   AS dummy_table   "))
             ->groupBy('range_umur')
             ->orderBy('range_umur')
+
             ->get();
 
+        $umur = $dataumur->pluck('range_umur');
+        $jml_umur  = $dataumur->pluck('jumlah');
 
 
-        return response()->json($data);
+
+//        return response()->json($data);
+
+
+        return view('pegawai', ['pangkat'=> $pangkat, 'jml_pangkat' => $jml_pangkat,
+            'jk'=> $jk, 'jml_jk' => $jml_jk,
+            'umur'=> $umur, 'jml_umur' => $jml_umur,
+
+
+        ]);
     }
 
     /**
