@@ -49,5 +49,7 @@
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{ url('template/admin/dist/js/pages/dashboard.js') }}"></script>
 <script src="{{ url('template/admin/dist/js/pages/dashboard3.js') }}"></script>
+
+@yield('onpage-js')
 </body>
 </html>
