@@ -29,7 +29,8 @@ Route::get('/', function(){
         'total_perda' => $perda,
         'total_perbup' => $perbup
     ]);
-});
+})->middleware('auth');
+
 Route::get('/pegawai',[PegawaiController::class,'index'] );
 
 Route::group(['prefix' => 'admin'], function () {
