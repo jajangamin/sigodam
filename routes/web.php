@@ -15,11 +15,7 @@ use App\Http\Controllers\PegawaiController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/dashboard', function(){
+Route::get('/', function(){
     // endpoint API
     $perda = Http::acceptJson()->get('https://jdih.ciamiskab.go.id/api/get_perda_count');
     $perbup = Http::acceptJson()->get('https://jdih.ciamiskab.go.id/api/get_perbup_count');
