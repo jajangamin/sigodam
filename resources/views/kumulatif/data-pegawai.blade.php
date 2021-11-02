@@ -4,7 +4,7 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1 class="m-0 font-weight-bold">Pusat Informasi dan Koordinasi COVID-19 Kabupaten Ciamis</h1>
+                <h1 class="m-0 font-weight-bold">Statistik Kepegawaian Pemerintah Kabupaten Ciamis</h1>
             </div><!-- /.col -->
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
@@ -20,7 +20,7 @@
 <section class="content">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-12">
 
                 <!-- STACKED BAR CHART -->
                 <div class="card card-success">
@@ -44,21 +44,13 @@
                     <!-- /.card-body -->
                 </div>
                 <!-- /.card -->
-
-
-
-
-
-
             </div>
             <!-- /.col (LEFT) -->
-            <div class="col-md-6">
-
+            <div class="col-lg-6">
                 <!-- PIE CHART -->
                 <div class="card card-danger">
                     <div class="card-header">
                         <h3 class="card-title">Pegawai Berdasarkan Jenis Kelamin</h3>
-
                         <div class="card-tools">
                             <button type="button" class="btn btn-tool" data-card-widget="collapse">
                                 <i class="fas fa-minus"></i>
@@ -69,18 +61,15 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <canvas id="pieChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                        <canvas id="pieGender" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
                     </div>
                     <!-- /.card-body -->
                 </div>
                 <!-- /.card -->
-
-
-{{--                //DATA UMUR--}}
-
-
-
-            <!-- PIE CHART -->
+                
+            </div>
+            <div class="col-lg-6">
+                <!-- PIE CHART -->
                 <div class="card card-danger">
                     <div class="card-header">
                         <h3 class="card-title">Pegawai Berdasarkan Umur</h3>
@@ -100,12 +89,6 @@
                     <!-- /.card-body -->
                 </div>
                 <!-- /.card -->
-
-
-
-
-
-
             </div>
             <!-- /.col (RIGHT) -->
         </div>
@@ -138,12 +121,8 @@
 
             var pangkat = {!! json_encode($pangkat) !!};
             var jml_pangkat = {!! json_encode($jml_pangkat) !!};
-
-
-
             // Get context with jQuery - using jQuery's .get() method.
             // var areaChartCanvas = $('#areaChart').get(0).getContext('2d')
-
             var areaChartData = {
                 labels  : pangkat, // ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
                 datasets: [
@@ -181,14 +160,11 @@
                     }]
                 }
             }
-
-
             //---------------------
             //- STACKED BAR CHART -
             //---------------------
             var stackedBarChartCanvas = $('#stackedBarChart').get(0).getContext('2d')
             var stackedBarChartData = $.extend(true, {}, areaChartData)
-
             var stackedBarChartOptions = {
                 responsive              : true,
                 maintainAspectRatio     : false,
@@ -201,15 +177,12 @@
                     }]
                 }
             }
-
             new Chart(stackedBarChartCanvas, {
                 type: 'bar',
                 data: stackedBarChartData,
                 options: stackedBarChartOptions
             })
-
             //- PIE CHART -
-
             var jk = {!! json_encode($jk) !!};
             var jml_jk = {!! json_encode($jml_jk) !!};
 
@@ -222,11 +195,9 @@
                     }
                 ]
             }
-
-
             //-------------
             // Get context with jQuery - using jQuery's .get() method.
-            var pieChartCanvas = $('#pieChart').get(0).getContext('2d')
+            var pieChartCanvas = $('#pieGender').get(0).getContext('2d')
             var pieData        = donutData;
             var pieOptions     = {
                 maintainAspectRatio : false,
@@ -239,10 +210,7 @@
                 data: pieData,
                 options: pieOptions
             })
-
-
             //- UMUR CHART -
-
             var umur = {!! json_encode($umur) !!};
             var jml_umur = {!! json_encode($jml_umur) !!};
 
@@ -255,8 +223,6 @@
                     }
                 ]
             }
-
-
             //-------------
             // Get context with jQuery - using jQuery's .get() method.
             var pieChartCanvas = $('#umurChart').get(0).getContext('2d')
@@ -272,10 +238,6 @@
                 data: pieData,
                 options: pieOptions
             })
-
-
-
-
         })
         </script>
 

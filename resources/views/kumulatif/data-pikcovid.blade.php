@@ -28,7 +28,7 @@
                 <div class="card-header border-0">
                     <div class="d-flex justify-content-between">
                     <h3 class="card-title text-bold">Statistik Data COVID-19 Kabupaten Ciamis</h3>
-                    <a href="javascript:void(0);">View Report</a>
+                    <a href="http://pikcovid19.ciamiskab.go.id/statistik" target="_blank">View Report</a>
                     </div>
                 </div>
                 <div class="card-body">

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PegawaiController;
@@ -15,21 +16,11 @@ use App\Http\Controllers\PegawaiController;
 |
 */
 
-Route::get('/', function(){
-    // endpoint API
-    $perda = Http::acceptJson()->get('https://jdih.ciamiskab.go.id/api/get_perda_count');
-    $perbup = Http::acceptJson()->get('https://jdih.ciamiskab.go.id/api/get_perbup_count');
-    $perda_year = Http::acceptJson()->get('https://jdih.ciamiskab.go.id/api/get_perda_by_tahun');
-    $perbup_year = Http::acceptJson()->get('https://jdih.ciamiskab.go.id/api/get_perbup_by_tahun');
-    // json_decode
-    $perda = json_decode($perda);
-    $perbup = json_decode($perbup);
-
-    return view('dashboard', [
-        'total_perda' => $perda,
-        'total_perbup' => $perbup
-    ]);
-})->middleware('auth');
+Route::get('/', [DashboardController::class, 'index'])->middleware('auth');
+Route::get('/dashboard/simpeg',[PegawaiController::class,'index'])->middleware('auth');
+Route::get('/dashboard/jdih',[DashboardController::class,'jdih'])->middleware('auth');
+Route::get('/dashboard/pikocis',[DashboardController::class,'pikcovid'])->middleware('auth') ;
+Route::get('/dashboard/prokes',[DashboardController::class,'prokes'])->middleware('auth') ;
 
 Route::get('/pegawai',[PegawaiController::class,'index'] );
 

@@ -33,7 +33,7 @@
         $linkAttributes =  'class="nav-link"';
         $dropdownitem = 'class="menu-open"';
         $styles = null;
-        $icon = '<i class="nav-icon fas fa-tachometer-alt"></i>';
+        $icon = '<i class="nav-icon fas fa-book"></i>';
         $caret = null;
 
         // With Children Attributes
@@ -50,7 +50,7 @@
 
         // Set Icon
         if(isset($options->icon) && $options->icon == true){
-            $icon = '<i class="nav-icon fas fa-tachometer-alt"></i>';
+            $icon = '<i class="nav-icon fas fa-book"></i>';
         }
     @endphp
     <li class="{{ $listItemClass }}">
